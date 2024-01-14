@@ -1,27 +1,33 @@
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:28:24 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1152149068309903650)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWorkers (20240113211743)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "name" character varying, "cpf" character varying, "birthdate" date, "street" character varying, "number" character varying, "district" character varying, "city" character varying, "state" character varying, "zip_code" character varying, "personal_phone" character varying, "reference_phone" character varying, "salary" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240113211743"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-14 05:16:12.268128"], ["updated_at", "2024-01-14 05:16:12.268128"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1152149068309903650)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.20.0.1 at 2024-01-14 05:27:47 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.2ms | Allocations: 403)
+Completed 200 OK in 40ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 3636)
+
+
+Started GET "/info" for 172.20.0.1 at 2024-01-14 05:28:02 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
-):
+ActionController::RoutingError (No route matches [GET] "/info"):
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
 web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
 web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
@@ -51,30 +57,152 @@ puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
 puma (4.3.12) lib/puma/server.rb:476:in `process_client'
 puma (4.3.12) lib/puma/server.rb:332:in `block in run'
 puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:33:25 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:28:23 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.0ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 1873)
+Completed 500 Internal Server Error in 1989ms (ActiveRecord: 5.2ms | Allocations: 22841)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+app/views/layouts/application.html.erb:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1152149068309903650)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1152149068309903650)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1152149068309903650)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1152149068309903650)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:49:38 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.1ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2085)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 3.6ms | Allocations: 11732)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:49:46 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 721)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms | Allocations: 3644)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.20.0.1 at 2024-01-14 05:49:52 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.7ms | Allocations: 182)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 862)
+
+
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:49:59 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 927)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.6ms | Allocations: 4857)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/work" for 172.20.0.1 at 2024-01-14 05:50:04 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/work"):
+  
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
 web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
 web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
 web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
@@ -96,7 +224,7 @@ actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
 rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
 rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
 railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
 puma (4.3.12) lib/puma/configuration.rb:228:in `call'
@@ -104,539 +232,505 @@ puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
 puma (4.3.12) lib/puma/server.rb:476:in `process_client'
 puma (4.3.12) lib/puma/server.rb:332:in `block in run'
 puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:33:26 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:50:16 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 711)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms | Allocations: 3629)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:34:39 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:51:13 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (3.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 918)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 3.5ms | Allocations: 4769)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <!-- <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:34:40 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:51:17 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 719)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 3643)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <!-- <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:35:07 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:52:00 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 918)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.6ms | Allocations: 4776)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     <!--
+     8:       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     -->
+    11:   </head>
+    12: 
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:36:27 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:52:26 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 918)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 2297)
+
+
+Started GET "/workers/new" for 172.20.0.1 at 2024-01-14 05:52:29 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#new as HTML
+  Rendering workers/new.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 8.6ms | Allocations: 3093)
+  Rendered workers/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 3434)
+Completed 200 OK in 31ms (Views: 11.4ms | ActiveRecord: 2.5ms | Allocations: 11661)
+
+
+Started POST "/workers" for 172.20.0.1 at 2024-01-14 05:52:32 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#create as HTML
+  Parameters: {"authenticity_token"=>"TWfjyQ9C0bd/nFRbtm0E4Mh2tfPpe3brsNzpwDLdYo9wRsdNjAHz3AkbeFkpeUHmeJtx43V1rKxj24oHLMLoIQ==", "commit"=>"Create Worker"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/workers_controller.rb:27:in `block in create'
+  [1m[36mWorker Create (1.7ms)[0m  [1m[32mINSERT INTO "workers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2024-01-14 05:52:32.791876"], ["updated_at", "2024-01-14 05:52:32.791876"]]
+  ↳ app/controllers/workers_controller.rb:27:in `block in create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/workers_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/workers/1
+Completed 302 Found in 13ms (ActiveRecord: 3.6ms | Allocations: 2909)
+
+
+Started GET "/workers/1" for 172.20.0.1 at 2024-01-14 05:52:32 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/show.html.erb within layouts/application
+  Rendered workers/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 220)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.9ms | Allocations: 1955)
+
+
+Started GET "/workers/1/edit" for 172.20.0.1 at 2024-01-14 05:52:36 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/edit.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 0.8ms | Allocations: 477)
+  Rendered workers/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 733)
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 0.6ms | Allocations: 2016)
+
+
+Started PATCH "/workers/1" for 172.20.0.1 at 2024-01-14 05:52:37 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#update as HTML
+  Parameters: {"authenticity_token"=>"6RCQUOZ46eLXERoBdG2RCXjZJZBa07UQGimk0Di2ijDXOPLi1MBTMXqkmLz4K255bYDFhVFk4o2zXMr2zN/ZUA==", "commit"=>"Update Worker", "id"=>"1"}
+  [1m[36mWorker Load (1.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+Redirected to http://localhost:3000/workers/1
+Completed 302 Found in 7ms (ActiveRecord: 1.4ms | Allocations: 1147)
+
+
+Started GET "/workers/1" for 172.20.0.1 at 2024-01-14 05:52:37 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (1.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/show.html.erb within layouts/application
+  Rendered workers/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 96)
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 1.4ms | Allocations: 1270)
+
+
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:52:38 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 862)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1433)
+
+
+Started GET "/workers/1" for 172.20.0.1 at 2024-01-14 05:52:41 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/show.html.erb within layouts/application
+  Rendered workers/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1238)
+
+
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:52:43 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 859)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 1428)
+
+
+Started GET "/workers/1" for 172.20.0.1 at 2024-01-14 05:52:45 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/show.html.erb within layouts/application
+  Rendered workers/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 1241)
+
+
+Started GET "/workers/1/edit" for 172.20.0.1 at 2024-01-14 05:52:47 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workers_controller.rb:63:in `set_worker'
+  Rendering workers/edit.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 1.0ms | Allocations: 448)
+  Rendered workers/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 578)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 1721)
+
+
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:52:49 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.1ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 859)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 1.1ms | Allocations: 1438)
+
+
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 05:53:11 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1078)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms | Allocations: 5018)
+
+
   
-PG::ConnectionBad (could not translate host name "db" to address: Temporary failure in name resolution
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-pg (1.5.4) lib/pg/connection.rb:819:in `connect_start'
-pg (1.5.4) lib/pg/connection.rb:819:in `connect_to_hosts'
-pg (1.5.4) lib/pg/connection.rb:759:in `new'
-pg (1.5.4) lib/pg.rb:63:in `connect'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:37:12 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 06:25:35 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 987)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.8ms | Allocations: 3995)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:39:15 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 06:25:37 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 858)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.8ms | Allocations: 3913)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_dev" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:42:25 +0000
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.22.0.1 at 2024-01-14 06:26:58 +0000
 Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.7ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 35.0ms | Allocations: 9698)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+ERROR: [Errno 21] Is a directory: 'bin'
+CRITICAL:root:Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/cliapp/app.py", line 182, in _run
+    self.settings.load_configs()
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 829, in load_configs
+    self._read_ini(pathname, f)
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 838, in _read_ini
+    cp.readfp(f)
+  File "/usr/lib/python3.9/configparser.py", line 763, in readfp
+    self.read_file(fp, source=filename)
+  File "/usr/lib/python3.9/configparser.py", line 718, in read_file
+    self._read(f, source)
+  File "/usr/lib/python3.9/configparser.py", line 1082, in _read
+    raise MissingSectionHeaderError(fpname, lineno, line)
+configparser.MissingSectionHeaderError: File contains no section headers.
+file: '/inss_crud/config/webpack/development.js', line: 1
+"process.env.NODE_ENV = process.env.NODE_ENV || 'development'\n"
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/cliapp/app.py", line 182, in _run
+    self.settings.load_configs()
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 829, in load_configs
+    self._read_ini(pathname, f)
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 838, in _read_ini
+    cp.readfp(f)
+  File "/usr/lib/python3.9/configparser.py", line 763, in readfp
+    self.read_file(fp, source=filename)
+  File "/usr/lib/python3.9/configparser.py", line 718, in read_file
+    self._read(f, source)
+  File "/usr/lib/python3.9/configparser.py", line 1082, in _read
+    raise MissingSectionHeaderError(fpname, lineno, line)
+configparser.MissingSectionHeaderError: File contains no section headers.
+file: '/inss_crud/config/webpack/development.js', line: 1
+"process.env.NODE_ENV = process.env.NODE_ENV || 'development'\n"
+
+Completed 500 Internal Server Error in 939ms (ActiveRecord: 7.5ms | Allocations: 20036)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.22.0.1 at 2024-01-10 21:42:27 +0000
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.22.0.1 at 2024-01-14 06:27:01 +0000
 Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 877)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+ERROR: [Errno 21] Is a directory: 'bin'
+CRITICAL:root:Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/cliapp/app.py", line 182, in _run
+    self.settings.load_configs()
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 829, in load_configs
+    self._read_ini(pathname, f)
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 838, in _read_ini
+    cp.readfp(f)
+  File "/usr/lib/python3.9/configparser.py", line 763, in readfp
+    self.read_file(fp, source=filename)
+  File "/usr/lib/python3.9/configparser.py", line 718, in read_file
+    self._read(f, source)
+  File "/usr/lib/python3.9/configparser.py", line 1082, in _read
+    raise MissingSectionHeaderError(fpname, lineno, line)
+configparser.MissingSectionHeaderError: File contains no section headers.
+file: '/inss_crud/config/webpack/development.js', line: 1
+"process.env.NODE_ENV = process.env.NODE_ENV || 'development'\n"
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/cliapp/app.py", line 182, in _run
+    self.settings.load_configs()
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 829, in load_configs
+    self._read_ini(pathname, f)
+  File "/usr/lib/python3/dist-packages/cliapp/settings.py", line 838, in _read_ini
+    cp.readfp(f)
+  File "/usr/lib/python3.9/configparser.py", line 763, in readfp
+    self.read_file(fp, source=filename)
+  File "/usr/lib/python3.9/configparser.py", line 718, in read_file
+    self._read(f, source)
+  File "/usr/lib/python3.9/configparser.py", line 1082, in _read
+    raise MissingSectionHeaderError(fpname, lineno, line)
+configparser.MissingSectionHeaderError: File contains no section headers.
+file: '/inss_crud/config/webpack/development.js', line: 1
+"process.env.NODE_ENV = process.env.NODE_ENV || 'development'\n"
+
+Completed 500 Internal Server Error in 792ms (ActiveRecord: 0.4ms | Allocations: 6295)
+
+
   
-ActiveRecord::NoDatabaseError (FATAL:  database "myapp_development" does not exist
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
 ):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
   
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:50:in `rescue in postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:33:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.24.0.1 at 2024-01-10 21:59:46 +0000
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.24.0.1 at 2024-01-14 07:05:07 +0000
 Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.8ms | Allocations: 403)
-Completed 200 OK in 34ms (Views: 18.9ms | ActiveRecord: 0.0ms | Allocations: 3596)
-
-
-Started GET "/" for 172.27.0.1 at 2024-01-10 22:02:54 +0000
-Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.8ms | Allocations: 297)
-Completed 200 OK in 22ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 2522)
-
-
-Started GET "/" for 172.27.0.1 at 2024-01-10 22:08:49 +0000
-Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.2ms | Allocations: 297)
-Completed 200 OK in 20ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 2541)
-
-
-Started GET "/" for 172.27.0.1 at 2024-01-10 22:19:12 +0000
-Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.2ms | Allocations: 178)
-Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 816)
-
-
-Started GET "/" for 172.30.0.1 at 2024-01-10 22:23:00 +0000
-Cannot render console from 172.30.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
   
-PG::ConnectionBad (FATAL:  password authentication failed for user "user"
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
 ):
   
-pg (1.5.4) lib/pg/connection.rb:696:in `async_connect_or_reset'
-pg (1.5.4) lib/pg/connection.rb:824:in `connect_to_hosts'
-pg (1.5.4) lib/pg/connection.rb:759:in `new'
-pg (1.5.4) lib/pg.rb:63:in `connect'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:586:in `check_pending!'
+activerecord (6.0.6.1) lib/active_record/migration.rb:564:in `call'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
 activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
@@ -664,7 +758,7 @@ actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
 rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
 actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
 rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
 railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
 puma (4.3.12) lib/puma/configuration.rb:228:in `call'
@@ -672,139 +766,343 @@ puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
 puma (4.3.12) lib/puma/server.rb:476:in `process_client'
 puma (4.3.12) lib/puma/server.rb:332:in `block in run'
 puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.30.0.1 at 2024-01-10 22:23:04 +0000
-Cannot render console from 172.30.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  
-PG::ConnectionBad (FATAL:  password authentication failed for user "user"
-):
-  
-pg (1.5.4) lib/pg/connection.rb:696:in `async_connect_or_reset'
-pg (1.5.4) lib/pg/connection.rb:824:in `connect_to_hosts'
-pg (1.5.4) lib/pg/connection.rb:759:in `new'
-pg (1.5.4) lib/pg.rb:63:in `connect'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.30.0.1 at 2024-01-10 22:23:05 +0000
-Cannot render console from 172.30.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  
-PG::ConnectionBad (FATAL:  password authentication failed for user "user"
-):
-  
-pg (1.5.4) lib/pg/connection.rb:696:in `async_connect_or_reset'
-pg (1.5.4) lib/pg/connection.rb:824:in `connect_to_hosts'
-pg (1.5.4) lib/pg/connection.rb:759:in `new'
-pg (1.5.4) lib/pg.rb:63:in `connect'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
-activerecord (6.0.6.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1125:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
-activerecord (6.0.6.1) lib/active_record/connection_handling.rb:189:in `connection'
-activerecord (6.0.6.1) lib/active_record/migration.rb:562:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
-activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
-railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
-webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
-puma (4.3.12) lib/puma/configuration.rb:228:in `call'
-puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
-puma (4.3.12) lib/puma/server.rb:476:in `process_client'
-puma (4.3.12) lib/puma/server.rb:332:in `block in run'
-puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
-Started GET "/" for 172.30.0.1 at 2024-01-10 22:24:20 +0000
-Cannot render console from 172.30.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1152149068309903650)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWorkers (20240113211743)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "name" character varying, "cpf" character varying, "birthdate" date, "street" character varying, "number" character varying, "district" character varying, "city" character varying, "state" character varying, "zip_code" character varying, "personal_phone" character varying, "reference_phone" character varying, "salary" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240113211743"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-14 07:05:39.785100"], ["updated_at", "2024-01-14 07:05:39.785100"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1152149068309903650)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.24.0.1 at 2024-01-14 07:05:50 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by Rails::WelcomeController#index as HTML
   Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.8ms | Allocations: 297)
-Completed 200 OK in 19ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 2541)
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.0ms | Allocations: 182)
+Completed 200 OK in 24ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 2364)
 
 
-Started GET "/" for 172.19.0.1 at 2024-01-13 05:53:18 +0000
+Started GET "/workers" for 172.24.0.1 at 2024-01-14 07:05:58 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (2.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 1864)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/inss_crud/node_modules/webpack-cli/bin/cli.js:93
+				throw err;
+				^
+
+Error: Cannot find module '@rails/webpacker'
+Require stack:
+- /inss_crud/config/webpack/environment.js
+- /inss_crud/config/webpack/development.js
+- /inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js
+- /inss_crud/node_modules/webpack-cli/bin/cli.js
+- /inss_crud/node_modules/webpack/bin/webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/inss_crud/config/webpack/environment.js:1:87)
+    at Module._compile (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/inss_crud/config/webpack/development.js:3:21)
+    at Module._compile (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at WEBPACK_OPTIONS (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:114:13)
+    at requireConfig (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:116:6)
+    at /inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:123:17
+    at Array.forEach (<anonymous>)
+    at module.exports (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:121:15)
+    at /inss_crud/node_modules/webpack-cli/bin/cli.js:71:45
+    at Object.parse (/inss_crud/node_modules/yargs/yargs.js:576:18)
+    at /inss_crud/node_modules/webpack-cli/bin/cli.js:49:8
+    at Object.<anonymous> (/inss_crud/node_modules/webpack-cli/bin/cli.js:366:3)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/inss_crud/config/webpack/environment.js',
+    '/inss_crud/config/webpack/development.js',
+    '/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js',
+    '/inss_crud/node_modules/webpack-cli/bin/cli.js',
+    '/inss_crud/node_modules/webpack/bin/webpack.js'
+  ]
+}
+
+Completed 500 Internal Server Error in 1519ms (ActiveRecord: 7.0ms | Allocations: 10829)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.19.0.1 at 2024-01-14 16:09:26 +0000
 Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by Rails::WelcomeController#index as HTML
   Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.0ms | Allocations: 297)
-Completed 200 OK in 22ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 2522)
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 17.8ms | Allocations: 297)
+Completed 200 OK in 30ms (Views: 20.3ms | ActiveRecord: 0.0ms | Allocations: 2564)
 
 
-Started GET "/" for 172.22.0.1 at 2024-01-13 06:05:34 +0000
-Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.8ms | Allocations: 403)
-Completed 200 OK in 47ms (Views: 23.6ms | ActiveRecord: 0.0ms | Allocations: 3595)
+Started GET "/workers" for 172.19.0.1 at 2024-01-14 16:09:35 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 1876)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/inss_crud/node_modules/webpack-cli/bin/cli.js:93
+				throw err;
+				^
+
+Error: Cannot find module '@rails/webpacker'
+Require stack:
+- /inss_crud/config/webpack/environment.js
+- /inss_crud/config/webpack/development.js
+- /inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js
+- /inss_crud/node_modules/webpack-cli/bin/cli.js
+- /inss_crud/node_modules/webpack/bin/webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/inss_crud/config/webpack/environment.js:1:87)
+    at Module._compile (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/inss_crud/config/webpack/development.js:3:21)
+    at Module._compile (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/inss_crud/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at WEBPACK_OPTIONS (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:114:13)
+    at requireConfig (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:116:6)
+    at /inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:123:17
+    at Array.forEach (<anonymous>)
+    at module.exports (/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js:121:15)
+    at /inss_crud/node_modules/webpack-cli/bin/cli.js:71:45
+    at Object.parse (/inss_crud/node_modules/yargs/yargs.js:576:18)
+    at /inss_crud/node_modules/webpack-cli/bin/cli.js:49:8
+    at Object.<anonymous> (/inss_crud/node_modules/webpack-cli/bin/cli.js:366:3)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/inss_crud/config/webpack/environment.js',
+    '/inss_crud/config/webpack/development.js',
+    '/inss_crud/node_modules/webpack-cli/bin/utils/convert-argv.js',
+    '/inss_crud/node_modules/webpack-cli/bin/cli.js',
+    '/inss_crud/node_modules/webpack/bin/webpack.js'
+  ]
+}
+
+Completed 500 Internal Server Error in 2109ms (ActiveRecord: 6.3ms | Allocations: 11058)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /inss_crud/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6:     <%= csp_meta_tag %>
+     7:     
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/workers" for 172.19.0.1 at 2024-01-14 16:09:59 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 927)
+Completed 200 OK in 24ms (Views: 20.8ms | ActiveRecord: 0.8ms | Allocations: 3653)
+
+
+Started GET "/workers" for 172.19.0.1 at 2024-01-14 16:33:50 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 822)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.6ms | Allocations: 2705)
+
+
+Started GET "/workers" for 172.19.0.1 at 2024-01-14 16:34:11 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 918)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 3953b9d469c2b3696e28
+Version: webpack 4.47.0
+Time: 431ms
+Built at: 01/14/2024 4:34:13 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1ffd2a1de1d3649b7f43.js   8.09 KiB  application  [emitted] [immutable]  application
+js/application-1ffd2a1de1d3649b7f43.js.map   3.53 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-1ffd2a1de1d3649b7f43.js js/application-1ffd2a1de1d3649b7f43.js.map
+[./app/javascript/packs/application.js] 4.19 KiB {application} [built] [failed] [1 error]
+
+ERROR in ./app/javascript/packs/application.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /inss_crud/babel-virtual-resolve-base.js
+    at __node_internal_ (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:224:9)
+    at new NodeError (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:194:5)
+    at packageResolve (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:908:9)
+    at moduleResolve (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:937:20)
+    at defaultResolve (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1007:15)
+    at resolve (/inss_crud/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1020:12)
+    at tryImportMetaResolve (/inss_crud/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/inss_crud/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/inss_crud/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/inss_crud/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/inss_crud/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/inss_crud/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/inss_crud/node_modules/gensync/index.js:291:5)
+    at /inss_crud/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/inss_crud/node_modules/gensync/index.js:43:15)
+    at Function.all (/inss_crud/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/inss_crud/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/inss_crud/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /inss_crud/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/inss_crud/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/inss_crud/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/inss_crud/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/inss_crud/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/inss_crud/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/inss_crud/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/inss_crud/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/inss_crud/node_modules/gensync/index.js:291:5)
+    at /inss_crud/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/inss_crud/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/inss_crud/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/inss_crud/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/inss_crud/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/inss_crud/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/inss_crud/node_modules/babel-loader/lib/index.js:4:194)
+    at /inss_crud/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+    at Object.<anonymous> (/inss_crud/node_modules/babel-loader/lib/index.js:4:97)
+    at Object._loader (/inss_crud/node_modules/babel-loader/lib/index.js:210:18)
+    at Object.loader (/inss_crud/node_modules/babel-loader/lib/index.js:48:18)
+    at Object.<anonymous> (/inss_crud/node_modules/babel-loader/lib/index.js:44:12)
+
+Completed 200 OK in 1983ms (Views: 1981.8ms | ActiveRecord: 0.4ms | Allocations: 6674)
+
+
+Started GET "/workers" for 172.19.0.1 at 2024-01-14 16:34:14 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 702)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 4643)
+
+
+  [1m[35m (59.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1152149068309903650)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWorkers (20240113211743)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "name" character varying, "cpf" character varying, "birthdate" date, "street" character varying, "number" character varying, "district" character varying, "city" character varying, "state" character varying, "zip_code" character varying, "personal_phone" character varying, "reference_phone" character varying, "salary" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20240113211743"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-14 17:07:31.783320"], ["updated_at", "2024-01-14 17:07:31.783320"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1152149068309903650)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/workers" for 172.20.0.1 at 2024-01-14 17:08:54 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2085)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 45.9ms | ActiveRecord: 4.0ms | Allocations: 12098)
 
 

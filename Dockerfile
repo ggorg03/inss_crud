@@ -1,10 +1,12 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.7
-RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client
+RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
+RUN npm install -y --global yarn
 WORKDIR /inss_crud
 COPY Gemfile /inss_crud/Gemfile
 COPY Gemfile.lock /inss_crud/Gemfile.lock
 RUN bundle install
+RUN rails webpacker:install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

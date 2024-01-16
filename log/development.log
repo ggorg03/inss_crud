@@ -1106,3 +1106,736 @@ Processing by WorkersController#index as HTML
 Completed 200 OK in 66ms (Views: 45.9ms | ActiveRecord: 4.0ms | Allocations: 12098)
 
 
+Started GET "/workers" for 172.20.0.1 at 2024-01-15 00:58:15 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1979)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 22.0ms | ActiveRecord: 2.3ms | Allocations: 11036)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 22:52:25 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 21.6ms | Allocations: 297)
+Completed 200 OK in 34ms (Views: 24.4ms | ActiveRecord: 0.0ms | Allocations: 2564)
+
+
+  [1m[36mWorker Load (4.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:03:16 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.6.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.3ms | Allocations: 183)
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 0.0ms | Allocations: 801)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:06:23 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/info" for 172.20.0.1 at 2024-01-15 23:06:32 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/info"):
+  
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:06:59 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:07:08 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+NameError (undefined local variable or method `workers_path' for #<ActionDispatch::Routing::Mapper:0x00007f5490040948>):
+  
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:08:49 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+SyntaxError (/inss_crud/config/routes.rb:2: syntax error, unexpected local variable or method, expecting `end'
+  resources :workers as: 'trabalhadores'
+                     ^~
+):
+  
+config/routes.rb:2: syntax error, unexpected local variable or method, expecting `end'
+config/routes.rb:2: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:13:12 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.7ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1906)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 36.2ms | ActiveRecord: 4.2ms | Allocations: 9213)
+
+
+Started GET "/workers/new" for 172.20.0.1 at 2024-01-15 23:13:14 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#new as HTML
+  Rendering workers/new.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 15.6ms | Allocations: 3050)
+  Rendered workers/new.html.erb within layouts/application (Duration: 17.1ms | Allocations: 3392)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 78ms (Views: 23.5ms | ActiveRecord: 36.7ms | Allocations: 14981)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:14:47 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1376)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 2.0ms | Allocations: 5781)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:14:48 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 704)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.6ms | Allocations: 4632)
+
+
+Started GET "/new" for 172.20.0.1 at 2024-01-15 23:14:49 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#new as HTML
+  Rendering workers/new.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 3.7ms | Allocations: 442)
+  Rendered workers/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 531)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 17.8ms | ActiveRecord: 3.8ms | Allocations: 11360)
+
+
+Started GET "/new" for 172.20.0.1 at 2024-01-15 23:14:51 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#new as HTML
+  Rendering workers/new.html.erb within layouts/application
+  Rendered workers/_form.html.erb (Duration: 1.2ms | Allocations: 389)
+  Rendered workers/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 478)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms | Allocations: 4438)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:14:53 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 699)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.4ms | Allocations: 4638)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:15:01 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.8ms | Allocations: 4628)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-15 23:15:02 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (2.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 2.4ms | Allocations: 4634)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 03:46:59 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (2.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 1978)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 40.9ms | ActiveRecord: 4.8ms | Allocations: 10927)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 03:55:16 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.7ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1032)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 16.9ms | ActiveRecord: 0.7ms | Allocations: 5934)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:01:11 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1045)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 1.8ms | Allocations: 5975)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:05:33 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.7ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 929)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.7ms | Allocations: 5842)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:06:06 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.4ms | Allocations: 5821)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:06:50 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.5ms | Allocations: 5813)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:07:53 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 918)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 0.5ms | Allocations: 5828)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:08:58 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 0.8ms | Allocations: 5806)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:14:06 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.9ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1029)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.9ms | Allocations: 5935)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:14:27 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 11.7ms | ActiveRecord: 0.4ms | Allocations: 5846)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:16:51 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 920)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 5842)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:17:05 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.4ms | Allocations: 5811)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:22:37 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 920)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.6ms | Allocations: 5833)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:24:10 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.5ms | Allocations: 5815)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:24:11 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 702)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.4ms | Allocations: 4634)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:32:11 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.9ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1029)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.9ms | Allocations: 5941)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:32:26 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.5ms | Allocations: 5817)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:40:22 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (1.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 832)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1215ms (Views: 1212.5ms | ActiveRecord: 1.4ms | Allocations: 11124)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:40:25 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 706)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 4645)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:40:26 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.4ms | Allocations: 4626)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:40:27 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 4628)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:40:50 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 518ms (Views: 516.6ms | ActiveRecord: 0.4ms | Allocations: 10388)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:41:42 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 588ms (Views: 585.8ms | ActiveRecord: 0.6ms | Allocations: 10393)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:47:24 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1034)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 0.6ms | Allocations: 5972)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:47:27 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 702)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.6ms | Allocations: 4627)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:47:33 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.5ms | Allocations: 5782)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:48:50 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.7ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.7ms | Allocations: 10192)
+
+
+  
+ActionView::Template::Error (Missing partial workers/_header, application/_header with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/inss_crud/app/views"
+  * "/usr/local/bundle/gems/actiontext-6.0.6.1/app/views"
+  * "/usr/local/bundle/gems/actionmailbox-6.0.6.1/app/views"
+):
+    15:     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    16:   </head>
+    17: 
+    18:   <%= render partial: "header" %>
+    19: 
+    20:   <body>
+    21:     <%= yield %>
+  
+app/views/layouts/application.html.erb:18
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:52:43 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 918)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 107)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 6122)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:53:19 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 106)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.6ms | Allocations: 6091)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:53:50 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 106)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.4ms | Allocations: 6088)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:56:41 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 106)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.8ms | Allocations: 6102)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:56:58 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 107)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.6ms | Allocations: 6118)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 04:58:08 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 106)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.6ms | Allocations: 6116)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:01:00 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 108)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 6096)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:01:17 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 108)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 0.6ms | Allocations: 6106)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:01:35 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 910)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.7ms | Allocations: 105)
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 0.5ms | Allocations: 6095)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:02:15 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 919)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 107)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.6ms | Allocations: 6125)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:04:29 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 106)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.4ms | Allocations: 6095)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:06:02 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 106)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.5ms | Allocations: 6100)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:06:14 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 105)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.4ms | Allocations: 6101)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:06:29 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 923)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 107)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.6ms | Allocations: 6118)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:09:00 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 104)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.3ms | Allocations: 6092)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:09:14 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (2.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 105)
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 2.4ms | Allocations: 6095)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:09:40 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 105)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.4ms | Allocations: 6091)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:18:02 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1029)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 105)
+Completed 200 OK in 16ms (Views: 13.1ms | ActiveRecord: 0.8ms | Allocations: 6214)
+
+
+Started GET "/" for 172.20.0.1 at 2024-01-16 05:19:15 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WorkersController#index as HTML
+  Rendering workers/index.html.erb within layouts/application
+  [1m[36mWorker Load (0.6ms)[0m  [1m[34mSELECT "workers".* FROM "workers"[0m
+  ↳ app/views/workers/index.html.erb:13
+  Rendered workers/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 919)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 107)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.6ms | Allocations: 6119)
+
+

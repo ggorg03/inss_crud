@@ -1,6 +1,6 @@
 /tmp/
 /config/master.key
-/log/
+log/*
 /public/packs
 /public/packs-test
 /node_modules

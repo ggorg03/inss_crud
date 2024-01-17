@@ -2,7 +2,10 @@ class Worker < ApplicationRecord
     validates :name,
             :presence => true,
             length: { :minimum => 2 },
-            format: { :with => /\A[a-zA-Z]+\z/, :message => "deve conter apenas letras" }
+            format: {
+                :with => /\A[a-zA-Z]+\z/,
+                :message => "deve conter apenas letras"
+            }
     
     validates :cpf,
             :presence => true,
@@ -20,9 +23,9 @@ class Worker < ApplicationRecord
     
     validates :number,
             :presence => true,
-            length: { :minimum => 2 }
+            length: { :minimum => 2 },
             format: {
-                :with => \A\d+[a-z]*\z,
+                :with => /\A\d+[a-z]*\z/,
                 :message => "número inválido" 
             }
     
@@ -32,7 +35,7 @@ class Worker < ApplicationRecord
     
     validates :state, :presence => true, length: { :minimum => 2 }
     
-    validates :zip_code, :presence => true
+    validates :zip_code, :presence => true,
             :presence => true,
             format: {
                 :with => /\A\d{5}\-\d{3}\z/,

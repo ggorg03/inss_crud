@@ -3,7 +3,7 @@ class Worker < ApplicationRecord
             :presence => true,
             length: { :minimum => 2 },
             format: {
-                :with => /\A[a-zA-Z]+\z/,
+                :with => /\A[(\s)a-zA-Z]+\z/,
                 :message => "deve conter apenas letras"
             }
     
@@ -17,7 +17,7 @@ class Worker < ApplicationRecord
     
     validates :birthdate, :presence => true
     
-    validates :salary, :presence => true, numericality: { :greather_than_or_equal_to => 0 }
+    validates :salary, :presence => true, numericality: { :greater_than_or_equal_to => 0 }
     
     validates :street, :presence => true, length: { :minimum => 5 }
     
@@ -35,7 +35,7 @@ class Worker < ApplicationRecord
     
     validates :state, :presence => true, length: { :minimum => 2 }
     
-    validates :zip_code, :presence => true,
+    validates :zip_code,
             :presence => true,
             format: {
                 :with => /\A\d{5}\-\d{3}\z/,
@@ -45,14 +45,14 @@ class Worker < ApplicationRecord
     validates :personal_phone,
             :presence => true,
             format: {
-                :with => /\A(\d{2})\d{5}\-\d{4}\z/,
+                :with => /\A\(\d{2}\)\d{5}\-\d{4}\z/,
                 :message => "deve estar no formato (XX)XXXXX-XXXX"
             }
     
     validates :reference_phone,
             :presence => true,
             format: {
-                :with => /\A(\d{2})\d{5}\-\d{4}\z/,
+                :with => /\A\(\d{2}\)\d{5}\-\d{4}\z/,
                 :message => "deve estar no formato (XX)XXXXX-XXXX"
             }
 end

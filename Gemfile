@@ -61,3 +61,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "sidekiq", "~> 7.2"
 
 gem "redis", "~> 5.0"
+
+gem "rubocop", require: false

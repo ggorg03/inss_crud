@@ -1,1 +1,5 @@
-inherit_from: .rubocop_todo.yml
+inherit_from: .rubocop_default.yml
+
+# Allow classes longer than 100 lines of code
+ClassLength:
+  Max: 250 # or whatever ends up being appropriate

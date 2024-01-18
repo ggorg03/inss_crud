@@ -17,6 +17,11 @@
 
   <%= render partial: "layouts/header" %>
   <body>
-    <%= yield %>
+    <div class='container'>
+      <%= yield %>
+    <div>
   </body>
+
+  <%= render partial: "layouts/new_worker_modal" %>
+
 </html>

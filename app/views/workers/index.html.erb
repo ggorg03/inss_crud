@@ -1,25 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
+  <p id="notice"><%= notice %></p>
 
-<h1>Workers</h1>
+  <h1>Listagem de proponentes</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th class="w-50">Nome</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>CEP</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @workers.each do |worker| %>
+          <tr>
+            <td><%= worker.name %></td>
+            <td><%= worker.cpf %></td>
+            <td><%= worker.personal_phone %></td>
+            <td><%= worker.zip_code %></td>
+            <td>
+              <%= link_to 'Show', worker, class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Edit', edit_worker_path(worker), class: "btn btn-secondary btn-sm" %>
+              <%= link_to 'Destroy', worker,
+                                     method: :delete,
+                                     data: { confirm: 'Are you sure?' }, 
+                                     class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @workers.each do |worker| %>
-      <tr>
-        <td><%= link_to 'Show', worker %></td>
-        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Worker', new_worker_path %>
+  <%= link_to 'Adionar proponente', new_worker_path %>
+</div>

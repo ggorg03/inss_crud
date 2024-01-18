@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:2.7
+FROM ruby:2.7.6
 RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
 RUN npm install -y --global yarn
 WORKDIR /inss_crud

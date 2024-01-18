@@ -6,7 +6,7 @@ class WorkerTest < ActiveSupport::TestCase
       name: "John Doe",
       cpf: "123.456.789-09",
       birthdate: Date.new(1990, 1, 1),
-      salary: 50000.0,
+      salary: 50_000.0,
       street: "Example Street",
       number: "42",
       district: "Example District",
@@ -47,7 +47,7 @@ class WorkerTest < ActiveSupport::TestCase
   test "cpf should be unique" do
     duplicate_worker = @worker.dup
     @worker.save
-    
+
     assert_not duplicate_worker.valid?
   end
 
@@ -89,7 +89,7 @@ class WorkerTest < ActiveSupport::TestCase
     @worker.street = "qweee"
     assert @worker.valid?
   end
-  
+
   # validating number
   test "number should be present" do
     @worker.number = nil
@@ -112,7 +112,7 @@ class WorkerTest < ActiveSupport::TestCase
     assert_not @worker.valid?
   end
 
-  #validating district
+  # validating district
   test "district should be present" do
     @worker.district = nil
     assert_not @worker.valid?
@@ -122,8 +122,8 @@ class WorkerTest < ActiveSupport::TestCase
     @worker.district = "e"
     assert_not @worker.valid?
   end
-  
-  #validating city
+
+  # validating city
   test "city should be present" do
     @worker.city = nil
     assert_not @worker.valid?
@@ -134,7 +134,7 @@ class WorkerTest < ActiveSupport::TestCase
     assert_not @worker.valid?
   end
 
-  #validating state
+  # validating state
   test "state should be present" do
     @worker.state = nil
     assert_not @worker.valid?
@@ -161,7 +161,7 @@ class WorkerTest < ActiveSupport::TestCase
     @worker.zip_code = "12345123"
     assert_not @worker.valid?
   end
-  
+
   # validating personal_phone
   test "personal_phone should be present" do
     @worker.personal_phone = nil

@@ -1,1 +1,28 @@
 @import "bootstrap";
+
+header .navbar-nav {
+    width: 100%;
+}
+
+.actions {
+    margin-left: calc(-1.5em * 0.5);
+    margin-right: calc(-1.5em * 0.5);
+}
+
+@media (max-width: 768px) {
+    .actions .btn {
+        width:100%;
+    }
+}
+
+.field_with_errors {
+    input {
+        @extend .is-invalid;
+    }
+}
+
+.field_with_errors {
+    + .invalid-feedback {
+        display: contents;
+    }
+}

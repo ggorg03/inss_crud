@@ -33,15 +33,6 @@ services:
     stdin_open: true
     tty: true
 
-
-#  yarn:
-#    image: node:latest
-#    container_name: yarn
-#    restart: always
-#    command: bash -c "tail -f dev/null"
-#    volumes:
-#      - .:/myapp
-
 volumes:
   pgdata:
 

@@ -3,8 +3,8 @@ class Worker < ApplicationRecord
               presence: true,
               length: { minimum: 2 },
               format: {
-                with: /\A[(\s)a-zA-Z]+\z/,
-                message: "deve conter apenas letras"
+                with: /\A[(\s)A-Za-zÀ-ÿ]+\z/,
+                message: "Deve conter apenas letras"
               }
 
     validates :cpf,
@@ -12,7 +12,7 @@ class Worker < ApplicationRecord
               uniqueness: true,
               format: {
                 with: /\A\d{3}\.\d{3}\.\d{3}-\d{2}\z/,
-                message: "deve estar no formato XXX.XXX.XXX-XX"
+                message: "Deve estar no formato XXX.XXX.XXX-XX"
               }
 
     validates :birthdate, presence: true
@@ -26,7 +26,7 @@ class Worker < ApplicationRecord
               length: { minimum: 2 },
               format: {
                 with: /\A\d+[a-z]*\z/,
-                message: "número inválido"
+                message: "Número de rua inválido"
               }
 
     validates :district, presence: true, length: { minimum: 2 }
@@ -39,20 +39,20 @@ class Worker < ApplicationRecord
               presence: true,
               format: {
                 with: /\A\d{5}-\d{3}\z/,
-                message: "deve estar no formato XXXXX-XXX"
+                message: "Deve estar no formato XXXXX-XXX"
               }
 
     validates :personal_phone,
               presence: true,
               format: {
                 with: /\A\(\d{2}\)\d{5}-\d{4}\z/,
-                message: "deve estar no formato (XX)XXXXX-XXXX"
+                message: "Deve estar no formato (XX)XXXXX-XXXX"
               }
 
     validates :reference_phone,
               presence: true,
               format: {
                 with: /\A\(\d{2}\)\d{5}-\d{4}\z/,
-                message: "deve estar no formato (XX)XXXXX-XXXX"
+                message: "Deve estar no formato (XX)XXXXX-XXXX"
               }
 end

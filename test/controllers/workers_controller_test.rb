@@ -10,8 +10,14 @@ class WorkersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get workers index" do
+    get workers_path
+    assert_response :success
+  end
+
   test "should get new" do
-    # TODO
+    get  new_worker_path
+    assert_response :success
   end
 
   test "should create worker" do

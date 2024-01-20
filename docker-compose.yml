@@ -30,6 +30,9 @@ services:
 #      - yarn
     networks:
       - backend
+    stdin_open: true
+    tty: true
+
 
 #  yarn:
 #    image: node:latest
@@ -44,20 +47,3 @@ volumes:
 
 networks:
   backend: {}
-
-
-# How connect with PGADMIN it --------------------------------------------------
-# Access PgAdmin at broswer at locahost:{services.pgadmin.ports[0]}
-# LOGGIN -----------------------------------------------------------------------
-#      - login: {services.pgadmin.enviroment.PGADMIN_DEFAULT_EMAIL}
-#      - password: {services.pgadmin.enviroment.PGADMIN_DEFAULT_PASSWORD}
-# 
-# REGISTER SERVICE STEP --------------------------------------------------------
-# - GENERAL    - Name: choose a name
-# ------------------------------------------------------------------------------
-# - CONNECTION - Host: {services.postgres.container_name}
-#              - Port: {services.postgres.ports[0]}
-#              - Maintance database: {services.postgres.environment.POSTGRES_DB}
-#              - Username: {services.postgres.environment.POSTGRES_USER}
-#              - Password: {services.postgres.environment.POSTGRES_PASSWORD}
-#-------------------------------------------------------------------------------

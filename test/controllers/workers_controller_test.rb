@@ -16,7 +16,7 @@ class WorkersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get  new_worker_path
+    get new_worker_path
     assert_response :success
   end
 

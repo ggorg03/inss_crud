@@ -57,6 +57,14 @@ class WorkersController < ApplicationController
     end
   end
 
+  def calculate_tax
+    salary = params[:salary].to_f
+
+    respond_to do |format|
+      format.json { render status: :ok, json: { tax: salary * 10 } }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_worker

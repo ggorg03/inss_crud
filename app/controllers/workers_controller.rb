@@ -1,6 +1,12 @@
 class WorkersController < ApplicationController
   before_action :set_worker, only: %i[ show edit update destroy ]
 
+  # CONTANTS
+  TAX_RULES = {
+    salary_range: [0, 2_112.00, 2_826.65, 3_751.05, 4_664.68, Float::INFINITY],
+    percent_tax: [0, 7.5, 15, 22.5, 27.5]
+  }.freeze
+
   # GET /workers or /workers.json
   def index
     @workers = Worker.all
@@ -57,11 +63,14 @@ class WorkersController < ApplicationController
     end
   end
 
-  def calculate_tax
-    salary = params[:salary].to_f
+  def inss_descount
+    descount = calculate_inss_descount(params[:salary])
 
     respond_to do |format|
-      format.json { render status: :ok, json: { tax: salary * 10 } }
+      format.json {
+        render status: :ok,
+               json: { tax: descount.round(2) }
+      }
     end
   end
 
@@ -74,5 +83,20 @@ class WorkersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def worker_params
       params.require(:worker).permit(:name, :cpf, :birthdate, :personal_phone, :salary, :reference_phone, :street, :number, :district, :city, :state, :zip_code)
+    end
+
+    def calculate_inss_descount(salary)
+      salary.to_f!
+
+      taxes = TAX_RULES[:percent_tax]
+      salaries = TAX_RULES[:salary_range]
+
+      desc = 0.0
+      taxes.each_with_index do |tax, i|
+        min_sal = salaries[i]
+        max_sal = salaries[i+1]
+
+        desc += ([max_sal, salary].min - min_sal) * tax / 100 if salary > min_sal
+      end
     end
 end

@@ -114,7 +114,7 @@
   </div>
 
   <div class="actions">
-    <%= f.button "Adicionar", type: "submit", :class=> "btn btn-success" %>
+    <%= f.button (defined?(submit_text) && submit_text) || "Adicionar", type: "submit", :class=> "btn btn-success" %>
     <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger"%>
   </div>
 <% end %>

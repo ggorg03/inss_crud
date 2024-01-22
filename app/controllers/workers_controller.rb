@@ -42,15 +42,20 @@ class WorkersController < ApplicationController
 
   # PATCH/PUT /workers/1 or /workers/1.json
   def update
-    respond_to do |format|
-      if @worker.update(worker_params)
-        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
-        format.json { render :show, status: :ok, location: @worker }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @worker.errors, status: :unprocessable_entity }
-      end
-    end
+    UpdateWorkersJob.perform_now @worker.id, params[:worker]
+
+##
+#    respond_to do |format|
+#
+#      if @worker.update(worker_params)
+#        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
+#        format.json { render :show, status: :ok, location: @worker }
+#      else
+#        format.html { render :edit, status: :unprocessable_entity }
+#        format.json { render json: @worker.errors, status: :unprocessable_entity }
+#      end
+#    end
+    redirect_to workers_path
   end
 
   # DELETE /workers/1 or /workers/1.json

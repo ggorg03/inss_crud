@@ -1,6 +1,3 @@
-# inss_crud
-A project designed for practicing Ruby on Rails and web development skills
-
 # Inss-CRUD
 
 ## Descrição do Projeto
@@ -10,13 +7,13 @@ O projeto **Inss-CRUD** é um aplicativo desenvolvido em Ruby 3 e Rails 6, utili
 ### Funcionalidades
 
 - **Cadastro de Proponentes**: Permite adicionar novos proponentes ao sistema, fornecendo informações detalhadas.
-- **Edição de Proponentes**: Permite a atualização das informações de proponentes já cadastrados.
+- **Edição de Proponentes**: Permite a atualização das informações de proponentes já cadastrados, essa operação acontece via Job utlizando Sidekiq e Redis.
 - **Visualização de Proponentes**: Permite a visualização detalhada das informações dos proponentes cadastrados.
 - **Remoção de Proponentes**: Possibilita a remoção de proponentes do sistema.
 
 ### Consulta do Desconto do INSS
 
-Além das operações de CRUD, o sistema oferece uma funcionalidade adicional de consulta dinâmica do desconto do INSS. Esta funcionalidade é ativada via AJAX sempre que o usuário preenche o campo de salário de maneira válida. O sistema realiza uma requisição assíncrona para calcular o desconto do INSS com base no salário informado, proporcionando uma experiência interativa e em tempo real.
+Além das operações de CRUD, o sistema oferece uma funcionalidade adicional de consulta dinâmica do desconto do INSS. Esta funcionalidade é ativada via AJAX sempre que o usuário preenche o campo de salário de maneira válida. O sistema realiza uma requisição assíncrona para calcular o desconto do INSS com base no salário informado e apresenta esse com uma mesagem temporária que não interfere no layout e na usabilidade do usuário, proporcionando uma experiência interativa e em tempo real.
 
 ## Tecnologias Utilizadas
 
@@ -44,16 +41,18 @@ Para executar o projeto utilizando Docker, siga os passos abaixo:
      ```
 
 3. **Configuração do Banco de Dados:**
-   - Execute as migrações do banco de dados com o comando:
+   - Execute a preparação do banco de dados com o comando:
      ```bash
-     docker-compose run web rails db:migrate
+     docker-compose run web rails db:setup
      ```
 
 Acesse a aplicação em [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
+## Passos futuros
+   - Melhoria dos testes controller
+   - Implementação dos testes para os Jobs
+   - Adicionar autenticação
+   - Adicionar exportação de proponentes a partir de arqyivo `.csv`
 
 ## Licença
 

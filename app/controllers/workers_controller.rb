@@ -86,7 +86,7 @@ class WorkersController < ApplicationController
     end
 
     def calculate_inss_descount(salary)
-      salary.to_f!
+      salary = salary.to_f
 
       taxes = TAX_RULES[:percent_tax]
       salaries = TAX_RULES[:salary_range]
@@ -98,5 +98,7 @@ class WorkersController < ApplicationController
 
         desc += ([max_sal, salary].min - min_sal) * tax / 100 if salary > min_sal
       end
+
+      desc
     end
 end

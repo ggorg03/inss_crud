@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post "workers/calculate_tax", :to => "workers#calculate_tax"
+  post "inss_descount", :to => "workers#inss_descount"
   resources :workers, :path => "workers"
   root to: 'workers#index'
 end

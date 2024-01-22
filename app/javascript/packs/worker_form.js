@@ -10,7 +10,7 @@ $(document).ready(() => {
 
           $.ajax({
             type: "POST",
-            url: "calculate_tax",
+            url: "/inss_descount",
             data: requestData,
             success: function(response) {
               notefy("INSS",

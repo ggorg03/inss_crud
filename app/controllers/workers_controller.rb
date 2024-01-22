@@ -43,18 +43,7 @@ class WorkersController < ApplicationController
   # PATCH/PUT /workers/1 or /workers/1.json
   def update
     UpdateWorkersJob.perform_now @worker.id, params[:worker]
-
-##
-#    respond_to do |format|
-#
-#      if @worker.update(worker_params)
-#        format.html { redirect_to worker_url(@worker), notice: "Worker was successfully updated." }
-#        format.json { render :show, status: :ok, location: @worker }
-#      else
-#        format.html { render :edit, status: :unprocessable_entity }
-#        format.json { render json: @worker.errors, status: :unprocessable_entity }
-#      end
-#    end
+    
     redirect_to workers_path
   end
 
@@ -72,10 +61,10 @@ class WorkersController < ApplicationController
     descount = calculate_inss_descount(params[:salary])
 
     respond_to do |format|
-      format.json {
+      format.json do
         render status: :ok,
                json: { tax: descount.round(2) }
-      }
+      end
     end
   end
 
@@ -99,7 +88,7 @@ class WorkersController < ApplicationController
       desc = 0.0
       taxes.each_with_index do |tax, i|
         min_sal = salaries[i]
-        max_sal = salaries[i+1]
+        max_sal = salaries[i + 1]
 
         desc += ([max_sal, salary].min - min_sal) * tax / 100 if salary > min_sal
       end

@@ -1,11 +1,14 @@
-<%= form_with(model: @worker, local: true, class:"form container") do |f| %>
-  <div class="row mb-3 pb-3 bg-light border rounded">
+<% defined?(disabled) || disabled = false %>
+
+<%= form_with(model: @worker, local: true, class:"form container" ) do |f| %>
+  <div class="row mb-4 pb-3 bg-light border rounded">
     <h3 class="bg-secondary text-white">Dados Pessoais</h3>
     <div class="col-lg-6">
       <%= f.label :name, "Nome completo" %>
       <%= f.text_field :name,
                           :class => "form-control #{ "is-invalid" if @worker.errors[:name].any? }",
-                          :placeholder => "Ex.: João Batista" %>
+                          :placeholder => "Ex.: João Batista",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:name].first %>
       </p>
@@ -14,7 +17,8 @@
     <div class="col-lg-3">
       <%= f.label :cpf, "CPF" %>
       <%= f.text_field :cpf, class:"form-control",
-                          :placeholder => "Ex.: xxx.xxx.xxx-xx" %>
+                          :placeholder => "Ex.: xxx.xxx.xxx-xx",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:cpf].first %>
       </p>  
@@ -22,7 +26,7 @@
 
     <div class="col-lg-3">
       <%= f.label :birthdate, "Data de nascimento" %>
-      <%= f.date_field :birthdate, class:"form-control" %>
+      <%= f.date_field :birthdate, class:"form-control", :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:birthdate].first %>
       </p>
@@ -31,7 +35,8 @@
     <div class="col-lg-3">
       <%= f.label :personal_phone, "Telefone pessoal" %>
       <%= f.text_field :personal_phone, :class => "form-control",
-                          :placeholder => "Ex.: (xx)xxxxx-xxxx" %>
+                          :placeholder => "Ex.: (xx)xxxxx-xxxx",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:personal_phone].first %>
       </p>
@@ -40,7 +45,8 @@
     <div class="col-lg-3">
       <%= f.label :reference_phone, "Telefone de referência" %>
       <%= f.text_field :reference_phone, class:"form-control",
-                          :placeholder=>"Ex.: (xx)xxxxx-xxxx" %>
+                          :placeholder=>"Ex.: (xx)xxxxx-xxxx",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:reference_phone].first %>
       </p>
@@ -49,19 +55,21 @@
     <div class="col-lg-3">
       <%= f.label :salary, "Salário" %>
       <%= f.text_field :salary, class:"form-control",
-                          :placeholder=>"Ex.: 3.0000,00" %>
+                          :placeholder=>"Ex.: 3.0000,00",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:salary].first %>
       </p>
     </div>
 
   </div>
-  <div class="row mb-3 pb-3 bg-light border rounded">
+  <div class="row mb-4 pb-3 bg-light border rounded">
     <h3 class="bg-secondary text-white">Dados de Endereço</h3>
     <div class="col-lg-4">
       <%= f.label :state, "Estado" %>
       <%= f.text_field :state, class:"form-control",
-                          :placeholder=>"Ex.: Rio Grande do Norte" %>
+                          :placeholder=>"Ex.: Rio Grande do Norte",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:state].first %>
       </p>
@@ -70,7 +78,8 @@
     <div class="col-lg-4">
       <%= f.label :city, "Cidade" %>
       <%= f.text_field :city, class:"form-control",
-                          :placeholder=>"Ex.: Natal" %>
+                          :placeholder=>"Ex.: Natal",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:city].first %>
       </p>
@@ -79,7 +88,8 @@
     <div class="col-lg-4">
       <%= f.label :district, "Bairro" %>
       <%= f.text_field :district, class:"form-control",
-                          :placeholder=>"Ex.: Cidade Nova" %>
+                          :placeholder=>"Ex.: Cidade Nova",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:district].first %>
       </p>
@@ -88,7 +98,8 @@
     <div class="col-lg-6">
       <%= f.label :street, "Rua" %>
       <%= f.text_field :street, class:"form-control",
-                          :placeholder=>"Ex.: Rua Santo Amaro" %>
+                          :placeholder=>"Ex.: Rua Santo Amaro",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:street].first %>
       </p>
@@ -97,7 +108,8 @@
     <div class="col-lg-2">
       <%= f.label :number, "Número" %>
       <%= f.text_field :number, class:"form-control",
-                          :placeholder=>"Ex.: 8080" %>
+                          :placeholder=>"Ex.: 8080",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:number].first %>
       </p>
@@ -106,7 +118,8 @@
     <div class="col-lg-2">
       <%= f.label :zip_code, "CEP" %>
       <%= f.text_field :zip_code, class:"form-control",
-                          :placeholder=>"Ex.: 59072-620" %>
+                          :placeholder=>"Ex.: 59072-620",
+                          :disabled => disabled %>
       <p class="invalid-feedback">
         <%= @worker.errors[:number].first %>
       </p>
@@ -114,8 +127,15 @@
   </div>
 
   <div class="actions">
-    <%= f.button (defined?(submit_text) && submit_text) || "Adicionar", type: "submit", :class=> "btn btn-success" %>
-    <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger"%>
+    <% if request.path == new_worker_path then %>
+      <%= f.button "Adicionar", type: "submit", :class=> "btn btn-success" %>
+      <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger"%>
+    <% elsif request.path == edit_worker_path then %>
+      <%= f.button "Salvar", type: "submit", :class=> "btn btn-success" %>
+      <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger" %>
+    <% else %>
+      <%= link_to 'Voltar', workers_path, :class => "btn btn-primary" %>
+    <% end %>
   </div>
 <% end %>
 

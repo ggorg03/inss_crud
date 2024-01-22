@@ -26,3 +26,8 @@ header .navbar-nav {
         display: contents;
     }
 }
+
+h1 {
+    @extend .mb-3;
+    @extend .mt-3;
+}

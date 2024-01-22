@@ -8,3 +8,13 @@ log/*
 yarn-debug.log*
 .yarn-integrity
 .byebug_history
+
+# flyio files
+.ruby-lsp
+.yarn/
+bin/docker-entrypoint
+config/dockerfile.yml
+.dockerignore
+.node-version
+.yarnrc
+fly.toml

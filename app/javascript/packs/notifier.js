@@ -6,12 +6,14 @@ export function notefy(title, content) {
     n_title.html(title);
     n_content.html(content);
     // animation
-    notifier.fadeIn(1000, function() {
-        setTimeout(function() {
-            notifier.fadeOut(1000).promise()
-            .then(() => {
-                n_title.html("");
-                n_content.html("");
-            });
-        }, 3000)});
+    if (notifier.is(":hidden")) {
+        notifier.fadeIn(1000, function() {
+            setTimeout(function() {
+                notifier.fadeOut(1000).promise()
+                .then(() => {
+                    n_title.html("");
+                    n_content.html("");
+                });
+            }, 3000)});
+    }
 }

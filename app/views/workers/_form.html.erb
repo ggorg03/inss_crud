@@ -127,10 +127,11 @@
   </div>
 
   <div class="actions">
-    <% if request.path == new_worker_path then %>
+    <% if request.path == new_worker_path || request.path == workers_path then %>
       <%= f.button "Adicionar", type: "submit", :class=> "btn btn-success" %>
       <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger"%>
     <% elsif request.path == edit_worker_path then %>
+      <%  %>
       <%= f.button "Salvar", type: "submit", :class=> "btn btn-success" %>
       <%= link_to 'Cancelar', workers_path, :class => "btn btn-danger" %>
     <% else %>

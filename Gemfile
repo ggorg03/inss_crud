@@ -63,3 +63,5 @@ gem "sidekiq", "~> 7.2"
 gem "redis", "~> 5.0"
 
 gem "rubocop", require: false
+
+gem "dockerfile-rails", ">= 1.6", group: :development

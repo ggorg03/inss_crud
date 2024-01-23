@@ -4,13 +4,13 @@ header .navbar-nav {
     width: 100%;
 }
 
-.actions {
+.form_actions {
     margin-left: calc(-1.5em * 0.5);
     margin-right: calc(-1.5em * 0.5);
 }
 
 @media (max-width: 768px) {
-    .actions .btn {
+    .form_actions .btn {
         width:100%;
     }
 }
@@ -30,4 +30,25 @@ header .navbar-nav {
 h1 {
     @extend .mb-3;
     @extend .mt-3;
+}
+
+table {
+    .empty_row {
+        td {
+            color: gray;
+            background-color: gainsboro;
+            pointer-events: none;
+        }
+    }
+
+     .invisible_row {
+        pointer-events: none;
+        visibility: hidden;
+        border-color: #fff;
+    }
+
+    .table_actions {
+        padding-top: .25rem !important;
+        padding-bottom: .25rem  !important;
+    }
 }

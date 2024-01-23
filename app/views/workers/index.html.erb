@@ -14,13 +14,18 @@
         </tr>
       </thead>
       <tbody>
+        <% if @workers.empty? then %>
+          <tr class="empty_row">
+            <td colspan="5">Nenhum proponente cadastrado</td>
+          </tr>
+        <% end %>
         <% @workers.each do |worker| %>
           <tr>
             <td><%= worker.name %></td>
             <td><%= worker.cpf %></td>
             <td><%= worker.personal_phone %></td>
             <td><%= worker.zip_code %></td>
-            <td>
+            <td class="table_actions">
               <%= link_to 'Show', worker, class: "btn btn-primary btn-sm" %>
               <%= link_to 'Edit', edit_worker_path(worker), class: "btn btn-secondary btn-sm" %>
               <%= link_to 'Destroy', worker,
@@ -28,6 +33,11 @@
                                      data: { confirm: 'Are you sure?' }, 
                                      class: "btn btn-danger btn-sm" %>
             </td>
+          </tr>
+        <% end %>
+        <% (@workers.current_per_page - @workers.count).times do %>
+          <tr class="invisible_row">
+            <td colspan="5"> &nbsp 5 </td>
           </tr>
         <% end %>
       </tbody>

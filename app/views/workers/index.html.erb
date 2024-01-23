@@ -37,10 +37,11 @@
         <% end %>
         <% (@workers.current_per_page - @workers.count).times do %>
           <tr class="invisible_row">
-            <td colspan="5"> &nbsp 5 </td>
+            <td colspan="5"> &nbsp </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+      <%= paginate @workers %>
   </div>
 </div>

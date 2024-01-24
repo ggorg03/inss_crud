@@ -39,8 +39,19 @@ Para executar o projeto utilizando Docker, siga os passos abaixo:
      ```bash
      docker-compose up
      ```
+3. **Instale o webpacker**
+   - Execute a instalação do webpacker
+     ```bash
+     docker-compose exec app rails webpacker:install
+     ```
+   - Em seguida receberá uma mensagem de comflito na versão do arquivo `babel.config.js`, ignore esse o comflito resposdendo com `n`.
+   
+     ![image](https://github.com/ggorg03/inss_crud/assets/23348483/3f657125-46f3-4704-96fc-310d4f1ccd29)
 
-3. **Configuração do Banco de Dados:**
+   - Obs.: O conflito na configuração do babel é causado por uma resolução da configuração padrão que o webpacker instala.
+
+
+5. **Configuração do Banco de Dados:**
    - Execute a preparação do banco de dados com o comando:
      ```bash
      docker-compose run web rails db:setup
@@ -52,7 +63,7 @@ Acesse a aplicação em [http://localhost:3000](http://localhost:3000) no seu na
    - Melhoria dos testes controller
    - Implementação dos testes para os Jobs
    - Adicionar autenticação
-   - Adicionar exportação de proponentes a partir de arqyivo `.csv`
+   - Adicionar exportação de proponentes a partir de arquivo `.csv`
 
 ## Licença
 

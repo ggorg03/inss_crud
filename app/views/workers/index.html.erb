@@ -42,6 +42,6 @@
         <% end %>
       </tbody>
     </table>
-      <%= paginate @workers %>
+      <%= paginate @workers, window: 2, outer_window: 1 %>
   </div>
 </div>

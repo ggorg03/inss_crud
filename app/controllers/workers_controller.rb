@@ -43,7 +43,7 @@ class WorkersController < ApplicationController
   # PATCH/PUT /workers/1 or /workers/1.json
   def update
     UpdateWorkersJob.perform_now @worker.id, params[:worker]
-    
+
     redirect_to workers_path
   end
 
